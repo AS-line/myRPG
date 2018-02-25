@@ -23,16 +23,12 @@ class Main():
             # При нажатии на клавише DOWN
             elif event.type == KEYDOWN:
                 if event.key == K_RIGHT:
-                    self.player.direction = RIGHT
                     self.player.moving = [1, 0, 0, 0]
                 if event.key == K_DOWN:
-                    self.player.direction = DOWN
                     self.player.moving = [0, 1, 0, 0]
                 if event.key == K_LEFT:
-                    self.player.direction = LEFT
                     self.player.moving = [0, 0, 1, 0]
                 if event.key == K_UP:
-                    self.player.direction = UP
                     self.player.moving = [0, 0, 0, 1]
             # При отжатии клавиш UP
             elif event.type == KEYUP:

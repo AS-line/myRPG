@@ -29,12 +29,21 @@ class Player():
     def move(self):
         if self.moving[RIGHT] == 1:
             self.x += PLAYER_SPEED
+            self.direction = RIGHT
         if self.moving[DOWN] == 1:
             self.y += PLAYER_SPEED
+            self.direction = DOWN
         if self.moving[LEFT] == 1:
             self.x -= PLAYER_SPEED
+            self.direction = LEFT
         if self.moving[UP] == 1:
             self.y -= PLAYER_SPEED
+            self.direction = UP
+
+        if self.x <= 0: self.x = 0
+        if self.y <= 0: self.y = 0
+        if self.x >= SCREEN_WIDTH - 22: self.x = SCREEN_WIDTH - 22
+        if self.y >= SCREEN_HEIGHT - 41: self.y = SCREEN_HEIGHT - 41
 
     def render(self, screen):
         screen.blit(self.images[self.direction][self.state], (self.x, self.y))
