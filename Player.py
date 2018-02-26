@@ -14,31 +14,29 @@ class Player():
         self.name = name
         self.hp = MAX_HP
         self.mp = MAX_MP
-        self.image_pack = ["data/right.png", "data/down.png", "data/left.png",
-                           "data/up.png"]
+        self.image_pack = ["data/left.png", "data/right.png"]
         self.images = []
         for image in self.image_pack:
             temp = pygame.image.load(image).convert_alpha()
             i = []
-            i.append(temp.subsurface(0, 0, 22, 41))
-            print("done")
+            i.append(temp.subsurface(0, 0, 47, 85))
+            i.append(temp.subsurface(47, 0, 134, 85))
+            i.append(temp.subsurface(134, 0, 210, 85))
             self.images.append(i)
-
+            print("Done")
         self.moving = [0, 0, 0, 0]
 
     def move(self):
-        if self.moving[RIGHT] == 1:
+        if self.moving[0] == 1:
             self.x += PLAYER_SPEED
             self.direction = RIGHT
-        if self.moving[DOWN] == 1:
+        if self.moving[1] == 1:
             self.y += PLAYER_SPEED
-            self.direction = DOWN
-        if self.moving[LEFT] == 1:
+        if self.moving[2] == 1:
             self.x -= PLAYER_SPEED
             self.direction = LEFT
-        if self.moving[UP] == 1:
+        if self.moving[3] == 1:
             self.y -= PLAYER_SPEED
-            self.direction = UP
 
         if self.x <= 0: self.x = 0
         if self.y <= 0: self.y = 0

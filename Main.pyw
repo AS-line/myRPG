@@ -33,13 +33,13 @@ class Main():
             # При отжатии клавиш UP
             elif event.type == KEYUP:
                 if event.key == K_RIGHT:
-                    self.player.moving[RIGHT] = 0
+                    self.player.moving[0] = 0
                 if event.key == K_DOWN:
-                    self.player.moving[DOWN] = 0
+                    self.player.moving[1] = 0
                 if event.key == K_LEFT:
-                    self.player.moving[LEFT] = 0
+                    self.player.moving[2] = 0
                 if event.key == K_UP:
-                    self.player.moving[UP] = 0
+                    self.player.moving[3] = 0
 
     def render(self):
         # Отрисовка всего
@@ -49,7 +49,7 @@ class Main():
 
     def main_loop(self):
         # Основной цикл программы
-        while self.running == True:
+        while self.running:
             self.player.move()
             self.render()
             self.hande_events()
