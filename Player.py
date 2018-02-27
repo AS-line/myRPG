@@ -6,7 +6,7 @@ from Constants import *
 
 class Player():
     def __init__(self, name):
-        self.state = DEAD
+        self.state = ALIVE
         self.direction = RIGHT
         self.x = START_X
         self.y = START_Y
@@ -20,7 +20,7 @@ class Player():
             i = []
             i.append(temp.subsurface(0, 0, 47, 85))
             i.append(temp.subsurface(47, 0, 86, 85))
-            i.append(temp.subsurface(133, 60, 77, 25))
+            i.append(temp.subsurface(133, 0, 77, 85))
             self.images.append(i)
             print("Done")
         self.moving = [0, 0, 0, 0]
@@ -46,4 +46,4 @@ class Player():
         screen.blit(self.images[self.direction][self.state], (self.x, self.y))
 
     def render_ui(self, screen):
-        pass
+        screen.blit(pygame.image.load("data/hpframe_short.png").convert_alpha(), (self.x, self.y+89))

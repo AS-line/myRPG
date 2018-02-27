@@ -1,2 +1,4 @@
 # myRPG
-v0.2.0(err)
+v0.2.1
+z - shoot
+x - dead :)

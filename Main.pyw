@@ -30,6 +30,10 @@ class Main():
                     self.player.moving = [0, 0, 1, 0]
                 if event.key == K_UP:
                     self.player.moving = [0, 0, 0, 1]
+                if event.key == K_z:
+                    self.player.state = SHOOT
+                if event.key == K_x:
+                    self.player.state = DEAD
             # При отжатии клавиш UP
             elif event.type == KEYUP:
                 if event.key == K_RIGHT:
@@ -40,11 +44,14 @@ class Main():
                     self.player.moving[2] = 0
                 if event.key == K_UP:
                     self.player.moving[3] = 0
+                if event.key == K_z:
+                    self.player.state = ALIVE
 
     def render(self):
         # Отрисовка всего
         self.screen.blit(self.backround, (0, 0))
         self.player.render(screen)
+        self.player.render_ui(screen)
         pygame.display.flip()
 
     def main_loop(self):
