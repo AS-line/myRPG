@@ -4,24 +4,23 @@ import pygame
 from Constants import *
 
 
-
 class Player():
     def __init__(self, name):
-        self.state = ALIVE
+        self.state = DEAD
         self.direction = RIGHT
         self.x = START_X
         self.y = START_Y
         self.name = name
         self.hp = MAX_HP
         self.mp = MAX_MP
-        self.image_pack = ["data/left.png", "data/right.png"]
+        self.image_pack = ["data/right.png", "data/left.png"]
         self.images = []
         for image in self.image_pack:
             temp = pygame.image.load(image).convert_alpha()
             i = []
             i.append(temp.subsurface(0, 0, 47, 85))
-            i.append(temp.subsurface(47, 0, 134, 85))
-            i.append(temp.subsurface(134, 0, 210, 85))
+            i.append(temp.subsurface(47, 0, 86, 85))
+            i.append(temp.subsurface(133, 60, 77, 25))
             self.images.append(i)
             print("Done")
         self.moving = [0, 0, 0, 0]
