@@ -19,6 +19,8 @@ class Main():
         for event in pygame.event.get():
             if event.type == QUIT:
                 self.running = False
+            elif event.type == USEREVENT+1:
+                self.player.tick()
             # Передвижение игрока
             # При нажатии на клавише DOWN
             elif event.type == KEYDOWN:
@@ -31,9 +33,10 @@ class Main():
                 if event.key == K_UP:
                     self.player.moving = [0, 0, 0, 1]
                 if event.key == K_z:
-                    self.player.state = SHOOT
-                if event.key == K_x:
-                    self.player.state = DEAD
+                    if self.player.mp >= SKILL1_COST:
+                        self.player.mp -= SKILL1_COST
+                        if self.player.state != SHOOT:
+                            self.player.state = SHOOT
             # При отжатии клавиш UP
             elif event.type == KEYUP:
                 if event.key == K_RIGHT:
@@ -56,8 +59,12 @@ class Main():
 
     def main_loop(self):
         # Основной цикл программы
+        pygame.time.set_timer(USEREVENT+1, 100)
         while self.running:
-            self.player.move()
+            print(self.player.mp)
+            self.player.tick()
+            if self.player.state != DEAD:
+                self.player.move()
             self.render()
             self.hande_events()
 
