@@ -65,8 +65,8 @@ class Main():
             self.player.tick()
             if self.player.state != DEAD:
                 self.player.move()
+                self.hande_events()
             self.render()
-            self.hande_events()
 
 
 pygame.init()
