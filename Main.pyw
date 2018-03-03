@@ -59,10 +59,10 @@ class Main():
 
     def main_loop(self):
         # Основной цикл программы
-        pygame.time.set_timer(USEREVENT+1, 100)
+        pygame.time.set_timer(USEREVENT+1, 500)
         while self.running:
             print(self.player.mp)
-            self.player.tick()
+            self.timer.tick(33)
             if self.player.state != DEAD:
                 self.player.move()
                 self.hande_events()

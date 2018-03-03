@@ -13,12 +13,12 @@ class Player():
         self.name = name
         self.hp = MAX_HP
         self.mp = MAX_MP
-        self.image_pack = ["data/test_texture_right.png", "data/test_texture_down.png", "data/test_texture_left.png",
-                           "data/test_texture_up.png"]
+        self.image_pack = ["data/right.png", "data/down.png", "data/left.png",
+                           "data/up.png"]
         self.images = []
         for image in self.image_pack:
             temp = pygame.image.load(image).convert_alpha()
-            i = [temp.subsurface(0, 0, 100, 100), temp.subsurface(100, 0, 100, 100), temp.subsurface(200, 0, 100, 100)]
+            i = [temp.subsurface(0, 0, 64, 64), temp.subsurface(64, 0, 64, 64), temp.subsurface(128, 0, 64, 64)]
             self.images.append(i)
             print("Done")
         self.moving = [0, 0, 0, 0]
@@ -39,25 +39,25 @@ class Player():
 
         if self.x <= 0: self.x = 0
         if self.y <= 0: self.y = 0
-        if self.x >= SCREEN_WIDTH - 47: self.x = SCREEN_WIDTH - 47
+        if self.x >= SCREEN_WIDTH - 60: self.x = SCREEN_WIDTH - 60
 
-        if self.y >= SCREEN_HEIGHT - 100: self.y = SCREEN_HEIGHT - 100
+        if self.y >= SCREEN_HEIGHT - 70: self.y = SCREEN_HEIGHT - 70
 
     def render(self, screen):
         screen.blit(self.images[self.direction][self.state], (self.x, self.y))
 
     def render_ui(self, screen):
-        screen.blit(pygame.image.load("data/hpframe_short.png").convert_alpha(), (self.x - 10, self.y + 89))
-        screen.blit(pygame.image.load("data/mannaframe_short.png").convert_alpha(), (self.x - 10, self.y + 89 + 7))
+        screen.blit(pygame.image.load("data/hpframe.png").convert_alpha(), (self.x+12, self.y + 58))
+        screen.blit(pygame.image.load("data/mpframe.png").convert_alpha(), (self.x+12, self.y + 58 + 6))
         m = 1
-        z = self.hp // 10
+        z = self.hp // 5
         while m <= z:
-            screen.blit(pygame.image.load("data/hptick.png"), (self.x - 15 + m * 5, self.y + 90))
+            screen.blit(pygame.image.load("data/hptick.png"), (self.x +11+m*2, self.y + 59))
             m += 1
         m = 1
-        z = self.mp // 10
+        z = self.mp // 5
         while m <= z:
-            screen.blit(pygame.image.load("data/mannatick.png"), (self.x - 14 + m * 5, self.y + 97))
+            screen.blit(pygame.image.load("data/mptick.png"), (self.x+11+m*2, self.y + 59+6))
             m += 1
 
     def tick(self):
